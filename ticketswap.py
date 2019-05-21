@@ -73,16 +73,17 @@ def checktickt(driver, link):
                         driver.get(link)
                         try:
                             buttonbuy = check_exists_by_xpath("//button[contains(text(),'Acheter un e-billet')]")
-                            print(buttonbuy)
-                            buttonbuy.click()
+                            if buttonbuy:
+                                print(buttonbuy)
+                                buttonbuy.click()
                         except Exception as e:
                             print (e)
 
-                    driver.get('https://www.ticketswap.fr/cart')
                     end = True
         else:
             print ("PAS DE TICKET, nombre de cycle:" + str(counter))
         counter += 1
+    driver.get('https://www.ticketswap.fr/cart')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
